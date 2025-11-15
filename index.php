@@ -15,6 +15,7 @@
       <a href="#">Sobre nosotros</a>
       <a href="citas.php">Citas</a>
       <a href="login.php">Iniciar sesión</a>
+      <a href="logout.php">Cerrar sesión</a>
     </nav>
   </header>
 
@@ -33,4 +34,5 @@
     </div>
 </footer>
 </body>
+
 </html>
