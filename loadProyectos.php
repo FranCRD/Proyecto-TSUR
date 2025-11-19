@@ -10,6 +10,7 @@ $result = $conexion->query($sql);
 while ($row = $result->fetch_assoc()) {
     echo "
         <li class='card'>
+            <h4>" .htmlspecialchars($row['idproyectos']) ." </h4>
             <h3>" . htmlspecialchars($row['titulo_proyectos']) . "</h3>
             <img src='" . htmlspecialchars($row['proyectos']) . "'>
             <p>" . htmlspecialchars($row['descripcion_proyectos']) . "</p>
