@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +27,8 @@
 <br>
 <p><strong>A continuacion se muestran algunos de nuestros proyectos en los que el equipo de TSUR ha trabajado</strong></p>
 <br>
+<?php if (isset($_SESSION['es_admin']) && $_SESSION['es_admin'] == 1): ?>
+    <!-- Contenido exclusivo para administradores -->   
 <p><strong>Para agregar un proyecto, haz click abajo:</strong></p>
 <br>
 <form action="insertProyectos.php" method="POST" enctype="multipart/form-data">
@@ -51,10 +57,10 @@
         <button type="submit">Eliminar</button>
     </form>
 
-<?php if (!empty($error)): ?>
+    <?php if (!empty($error)): ?>
         <p style="color:red; font-weight:bold;"><?php echo htmlspecialchars($error); ?></p>
- <?php endif; ?>
-
+    <?php endif; ?>
+<?php endif; ?>
 <br>
 <hr>
 <h3>Proyectos Destacados</h3>
