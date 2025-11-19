@@ -17,18 +17,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Verificar si el usuario ya existe
-    $sql_check = "SELECT * FROM usuarios WHERE nombre_usuario = '$nombre_usuario'";
+    $sql_check = "SELECT * FROM usuarios WHERE email_usuario = '$email'";
     $resultado_check = $conexion->query($sql_check);
 
     if ($resultado_check->num_rows > 0) {
-        header("Location: registro.php?error=2");
+        header("Location: registro.php?error=2"); //error si el correo ya esta registrado
         exit();
     }
 
+    //Verificar que el email sea valido
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: registro.php?error=4"); //error si el correo no es valido
+        exit();
+    }
 
-    // Insertar nuevo usuario
+    //Encriptar la contraseña
+    $password_hash = password_hash($contrasena, PASSWORD_DEFAULT);
+
+
+    // Insertar nuevo usuario con contraseña encriptada
     $sql = "INSERT INTO usuarios (nombre_usuario, apellido_usuario, telefono_usuario, email_usuario, password) 
-            VALUES ('$nombre_usuario', '$apellido_usuario', '$telefono_usuario', '$email', '$contrasena')";
+            VALUES ('$nombre_usuario', '$apellido_usuario', '$telefono_usuario', '$email', '$password_hash')";
     
     if ($conexion->query($sql)) {
         // Registro exitoso, redirigir al login
