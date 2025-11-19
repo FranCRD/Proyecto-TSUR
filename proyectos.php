@@ -32,22 +32,43 @@ session_start();
 <p><strong>Para agregar un proyecto, haz click abajo:</strong></p>
 <br>
 <form action="insertProyectos.php" method="POST" enctype="multipart/form-data">
-    <input type="file" name="imagenes" accept="image/*" required><br><br>
+
+    <label><strong>Título del proyecto:</strong></label><br>
+    <input type="text" name="titulo" placeholder="Escribe el título" required>
+    <br><br>
+
+    <label><strong>Descripción del proyecto:</strong></label><br>
+    <textarea name="descripcion" placeholder="Escribe una breve descripción" rows="4" required></textarea>
+    <br><br>
+
+    <label><strong>Selecciona una imagen:</strong></label><br>
+    <input type="file" name="imagenes" accept="image/*" required>
+    <br><br>
+
     <button type="submit">Subir Proyecto</button><br>
 </form>
-<br>
 
- <h3>Reemplazar una imagen (sube una nueva imagen para el ID indicado)</h3>
+<h3>Reemplazar una imagen (sube una nueva imagen para el ID indicado)</h3>
  <form method="POST" action="updateProyectos.php" enctype="multipart/form-data">
-     <label for="id">ID de la imagen:</label>
-     <input type="number" name="id" id="id" required>
-     <br><br> 
-     <label for="imagen">Selecciona la nueva imagen:</label>
-     <input type="file" name="imagenes" id="imagenes" accept="image/*" required>
-     <br><br>
-     <button type="submit">Reemplazar imagen</button><br>
-  </form>
-  <br>
+
+    <label>ID del proyecto:</label>
+    <input type="number" name="id" required>
+    <br><br>
+
+    <label>Nuevo Título:</label>
+    <input type="text" name="titulo" required>
+    <br><br>
+
+    <label>Nueva Descripción:</label>
+    <textarea name="descripcion" rows="3" required></textarea>
+    <br><br>
+
+    <label>Nueva imagen (opcional):</label>
+    <input type="file" name="imagenes" accept="image/*">
+    <br><br>
+
+    <button type="submit">Actualizar proyecto</button><br>
+</form>
 
   <h2>Eliminar imagen por ID</h2>
     <form method="POST" action="deleteProyectos.php">
