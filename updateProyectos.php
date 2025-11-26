@@ -1,54 +1,64 @@
 <?php
 include("conexion.php");
 
-// Recibir datos del formulario
-$id = $_POST['id'];
-$titulo = $_POST['titulo'];
-$descripcion = $_POST['descripcion'];
+// Verificar método
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo "Método no permitido";
+    exit();
+}
 
-// Obtener la imagen actual por si NO suben una nueva
+// Recibir datos
+$id = $_POST['id'] ?? '';
+$titulo = $_POST['titulo'] ?? '';
+$descripcion = $_POST['descripcion'] ?? '';
+
+if (empty($id) || empty($titulo) || empty($descripcion)) {
+    echo "Faltan datos";
+    exit();
+}
+
+// Obtener imagen actual
 $sql_img = "SELECT proyectos FROM proyectos WHERE idproyectos = $id";
 $resultado = $conexion->query($sql_img);
 
-if ($resultado->num_rows == 0) {
-    echo "Error: El proyecto con ese ID no existe.";
+if ($resultado->num_rows === 0) {
+    echo "Proyecto no encontrado";
     exit();
 }
 
 $datos = $resultado->fetch_assoc();
 $imagen_actual = $datos['proyectos'];
 
-// Procesar imagen nueva (si la mandan)
-$nueva_imagen = $_FILES['imagenes']['name'];
+// Manejar imagen nueva
+if (isset($_FILES['imagenes']) && $_FILES['imagenes']['error'] === UPLOAD_ERR_OK) {
 
-if (!empty($nueva_imagen)) {
+    $nombre = $_FILES['imagenes']['name'];
+    $tmp = $_FILES['imagenes']['tmp_name'];
+    $ruta_nueva = "proyectos_img/" . basename($nombre);
 
-    $ruta_temp = $_FILES['imagenes']['tmp_name'];
-    $ruta_destino = "proyectos_img/" . basename($nueva_imagen);
-
-    if (!move_uploaded_file($ruta_temp, $ruta_destino)) {
-        echo "Error al subir la nueva imagen.";
+    if (!move_uploaded_file($tmp, $ruta_nueva)) {
+        echo "Error al subir la imagen";
         exit();
     }
 
 } else {
-    // Mantener la imagen actual
-    $ruta_destino = $imagen_actual;
+    // Si no envían imagen, usamos la existente
+    $ruta_nueva = $imagen_actual;
 }
 
-// UPDATE final
+// UPDATE
 $sql_update = "UPDATE proyectos 
                SET titulo_proyectos = '$titulo',
-                   proyectos = '$ruta_destino',
+                   proyectos = '$ruta_nueva',
                    descripcion_proyectos = '$descripcion'
                WHERE idproyectos = $id";
 
 if ($conexion->query($sql_update) === TRUE) {
-    header("Location: proyectos.php");
-    exit();
+    echo "ok"; // respuesta que tu AJAX espera
 } else {
     echo "Error al actualizar: " . $conexion->error;
 }
 
 $conexion->close();
 ?>
+
