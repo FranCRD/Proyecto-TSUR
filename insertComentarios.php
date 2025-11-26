@@ -77,7 +77,7 @@ include "conexion.php";
 </section>
 
 <?php
-// ===== INSERT DE COMENTARIOS CORREGIDO =====
+// ===== INSERT DE COMENTARIOS=====
 if (isset($_POST['enviar'])) {
 
     $usuario    = $_SESSION['nombre_usuario'];
@@ -94,7 +94,7 @@ if (isset($_POST['enviar'])) {
     $stmt->bind_param("sssds", $titulo, $comentario, $usuario, $valoracion, $fecha);
 
     if ($stmt->execute()) {
-        header("Location: comentarios.php");
+        header("Location: insertComentarios.php");
         exit();
     } else {
         echo "Error: " . $conexion->error;
