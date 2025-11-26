@@ -50,7 +50,6 @@ session_start();
             <form class="form-comentarios" method="post" action="">
                 <div class="campo">
                     <label for="nombre_usuario">Nombre de usuario</label>
-                    <!-- tu amiga luego decide si usa este valor o el de la sesión -->
                     <input type="text" id="nombre_usuario" name="nombre_usuario"
                            value="<?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?>"
                            readonly>
@@ -93,6 +92,7 @@ session_start();
 </footer>
 </body>
 </html>
+
 
 
 
