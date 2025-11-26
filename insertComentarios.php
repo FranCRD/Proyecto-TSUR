@@ -4,6 +4,38 @@ session_start();
 include "conexion.php";
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentarios</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">TSUR</div>
+    <nav class="nav">
+      <a href="index.php">Inicio</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="proyectos.php">Proyectos</a>
+        <a href="insertComentarios.php">Comentarios</a>
+        <?php if (!isset($_SESSION['nombre_usuario'])): ?>
+          <!-- Usuario no logueado -->
+            <a href="login.php">Iniciar sesión</a>
+        <?php else: ?>
+            <!-- Usuario logueado -->
+             <div class="user-menu">
+             <a href="#" class="user-icon">👤 <?php echo $_SESSION['nombre_usuario']; ?></a>
+        <div class="user-dropdown">
+            <a href="editar_perfil.php">Editar perfil</a>
+            <a href="logout.php">Cerrar sesión</a>
+        </div>
+    </div> 
+        <?php endif; ?>
+    </nav>
+</header>
+
 <section id="comentarios" class="comentarios">
     <h2>Comentarios</h2>
 
@@ -101,3 +133,10 @@ if (isset($_POST['enviar'])) {
     }
 }
 ?>
+<footer class="footer"> 
+    <div class="footer-content">
+    <p>© 2024 TSUR. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
