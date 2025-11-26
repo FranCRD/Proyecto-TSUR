@@ -44,7 +44,7 @@ include "conexion.php";
                               placeholder="Escriba su comentario" required></textarea>
                 </div>
 
-                <!-- AHORA SÍ TIENE NAME="enviar" -->
+                
                 <button type="submit" name="enviar">Publicar</button>
             </form>
         <?php else: ?>
