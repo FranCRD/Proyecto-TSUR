@@ -22,7 +22,7 @@ session_start();
             <a href="login.php">Iniciar sesión</a>
         <?php else: ?>
             <!-- Usuario logueado -->
-             <div clas="user-menu">
+             <div class="user-menu">
              <a href="#" class="user-icon">👤 <?php echo $_SESSION['nombre_usuario']; ?></a>
         <div class="user-dropdown">
             <a href="editar_perfil.php">Editar perfil</a>
@@ -93,6 +93,7 @@ session_start();
 </footer>
 </body>
 </html>
+
 
 
 
