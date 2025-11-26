@@ -1,22 +1,24 @@
 <?php
-include ("conexion.php");
-// Verificamos que se haya enviado el ID
-if (isset($_POST["id"])) {
-    $id_proyecto = intval($_POST["id"]);
+include_once("conexion.php");
 
-    // Consulta para eliminar el registro
-    $sql = "DELETE FROM proyectos WHERE idproyectos = $id_proyecto";
-
-    if ($conexion->query($sql) === TRUE) {
-        // Redirigir a main.php si se eliminó correctamente
-        header("Location: proyectos.php");
-        exit();
-    } else {
-        echo " Error al eliminar: " . $conexion->error;
-    }
-} else {
-    echo "No se recibió el ID para eliminar.";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo "Método no permitido";
+    exit();
 }
 
+if (!isset($_POST["id"]) || empty($_POST["id"])) {
+    echo "No se recibió ID";
+    exit();
+}
+
+$id = intval($_POST["id"]);
+
+$sql = "DELETE FROM proyectos WHERE idproyectos = $id";
+
+if ($conexion->query($sql) === TRUE) {
+    echo "ok";
+} else {
+    echo "Error al eliminar: " . $conexion->error;
+}
 $conexion->close();
 ?>
