@@ -17,6 +17,7 @@ session_start();
       <a href="index.php">Inicio</a>
       <a href="#">Sobre nosotros</a>
       <a href="proyectos.php">Proyectos</a>
+        <a href="insertComentarios.php">Comentarios</a>
         <?php if (!isset($_SESSION['nombre_usuario'])): ?>
           <!-- Usuario no logueado -->
             <a href="login.php">Iniciar sesión</a>
@@ -92,6 +93,7 @@ session_start();
 </footer>
 </body>
 </html>
+
 
 
 
