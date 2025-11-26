@@ -18,3 +18,22 @@
     width: 100%;      
     border-radius: 10px;
 }
+
+/* Estilos para los mensajes de éxito y error */
+.mensaje {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+.mensaje.exito {
+    background-color: #d4f8d4;
+    color: #2e7d32;
+}
+
+.mensaje.error {
+    background-color: #ffd6d6;
+    color: #c62828;
+}
