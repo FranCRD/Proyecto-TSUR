@@ -44,8 +44,6 @@ session_start();
      <?php if (isset($_SESSION['es_admin']) && $_SESSION['es_admin'] == 1): ?>
 <p><strong>Para agregar un proyecto, haz click abajo:</strong></p>
 <br>
-<!-- Hacemos el llamado al archivo JavaScript -->
- <script src="funciones.js"></script>
 
 <form class="formInsertProyectos" id="formInsertProyectos" method="POST" enctype="multipart/form-data">
         <label><strong>Título del proyecto:</strong></label><br>
