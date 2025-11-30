@@ -11,6 +11,7 @@ include "conexion.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comentarios</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="comentarios.css">
 </head>
 <body>
 <header class="header">
@@ -80,7 +81,7 @@ include "conexion.php";
                 <button type="submit" name="enviar">Publicar</button>
             </form>
         <?php else: ?>
-            <p>Debe iniciar sesión para poder publicar un comentario.</p>
+            <p class="mensaje-login">Debe iniciar sesión para poder publicar un comentario.</p>
         <?php endif; ?>
 
 
@@ -91,14 +92,18 @@ include "conexion.php";
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo '<div style="border:1px solid #ccc; padding:10px; margin:10px 0;">';
-                    echo '<b>Usuario:</b> '.$row["nombre_usuario"].'<br>';
-                    echo '<b>Calificación:</b> '.$row["valoracion"].'/5<br>';
-                    echo '<h4>'.htmlspecialchars($row["TituloComentario"]).'</h4>';
-                    echo '<p>'.nl2br(htmlspecialchars($row["Comentario"])).'</p>';        
-                    
-                    echo '<small>'.$row["Fecha"].'</small>';
-                    echo '</div>';
+                    $estrellas = str_repeat("⭐", $row["valoracion"]);
+
+echo '<div class="comentario-card">';
+echo '<div class="comentario-header">';
+echo '<span class="usuario">'.$row["nombre_usuario"].'</span>';
+echo '<span class="estrellas">'.$estrellas.'</span>';
+echo '</div>';
+
+echo '<h4>'.htmlspecialchars($row["TituloComentario"]).'</h4>';
+echo '<p>'.nl2br(htmlspecialchars($row["Comentario"])).'</p>';        
+echo '<div class="fecha">'.$row["Fecha"].'</div>';
+echo '</div>';
                 }
             } else {
                 echo "<p>No hay comentarios aún.</p>";
@@ -126,7 +131,7 @@ if (isset($_POST['enviar'])) {
     $stmt->bind_param("sssds", $titulo, $comentario, $usuario, $valoracion, $fecha);
 
     if ($stmt->execute()) {
-        header("Location: insertComentarios.php");
+       echo "<script>window.location='insertComentarios.php';</script>";
         exit();
     } else {
         echo "Error: " . $conexion->error;
