@@ -1,0 +1,200 @@
+/* ---------- DISENO DE COMENTARIOS COMENTARIOS ---------- */
+.comentarios {
+    background: #3a3a3a;         /* Fondo de la interfaz */
+    padding: 40px 10%;
+}
+
+.comentarios h2 {     /* Titulo de la seccion */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffd100;             
+   
+    font-size: clamp(28px, 5vw, 64px);
+    letter-spacing: 1px;
+    text-transform: none;      
+    margin-top: 6px;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.35);
+}
+
+/* ---------- CONTENEDOR GENERAL PARA CRUD Y LISTA (dos columnas) ---------- */
+.comentarios-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 2fr;  /* formulario | lista de comentarios */
+    gap: 30px;
+    border-top: 1px solid rgba(255,209,0,0.12);
+    padding-top: 25px;
+    align-items: start;              /* alinea la fila superior */
+}
+
+/* ---------- FORMULARIO ---------- */
+.form-comentarios {
+    background: #2c2c2c;        
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    color: #fff;
+    align-self: start;          /* evita que el form se estire verticalmente */
+}
+
+.form-comentarios .campo {
+    margin-bottom: 15px;
+}
+
+.form-comentarios label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #ffd100;
+    font-size: 15px;
+}
+
+.form-comentarios input,
+.form-comentarios select,
+.form-comentarios textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #222222;
+    color: #eee;
+    border: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-comentarios input:focus,
+.form-comentarios select:focus,
+.form-comentarios textarea:focus {
+    border-color: rgba(255,209,0,0.8);
+    box-shadow: 0 4px 12px rgba(255,209,0,0.06);
+}
+
+/* BOTON SUBMIT */
+.form-comentarios button {
+    background: linear-gradient(135deg, #ffd100, #f0be00);
+    color: #111;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+    box-shadow: 0 6px 18px rgba(240,190,0,0.18);
+}
+
+.form-comentarios button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(240,190,0,0.20);
+}
+
+/* ---------- LISTA DE COMENTARIOS (con scroll) ---------- */
+.lista-comentarios {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    max-height: 70vh;      
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* SCROLL */
+.lista-comentarios::-webkit-scrollbar {
+    width: 7px;
+}
+
+.lista-comentarios::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lista-comentarios::-webkit-scrollbar-thumb {
+    background: rgba(255,209,0,0.95);
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+
+.lista-comentarios::-webkit-scrollbar-thumb:hover {
+    background: rgba(230,188,0,1);
+}
+
+/* ---------- TARJETA DE COMENTARIO (como se ve cada uno) ---------- */
+.comentario-card {
+    background: linear-gradient(180deg, #222225, #1f1f1f);
+    padding: 16px 18px;
+    border-radius: 12px;
+    border-left: 4px solid rgba(255,209,0,0.95);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* hover sutil */
+.comentario-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+}
+
+/*  nombre + estrellas (header tarjeta) */
+.comentario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.usuario {
+    font-weight: 800;
+    color: #ffd100;
+    font-size: 16px;
+}
+
+/* estrellas */
+.estrellas {
+    color: #ffd100;
+    font-size: 16px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* titulo y el texto */
+.comentario-card h4 {
+    margin: 6px 0;
+    color: #fff;
+    font-size: 15px;
+}
+
+.comentario-card p {
+    color: #d3d3d3;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.fecha {
+    font-size: 12px;
+    color: #9a9a9a;
+    margin-top: 10px;
+}
+
+/* ajustes responsivos (pantallas pequenas),  */
+@media (max-width: 900px) {
+    .comentarios-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-comentarios {
+        max-height: 50vh;
+    }
+}
+
+/* ---- MENSAJE CUANDO NO ESTA LOGUEADO ---- */
+.mensaje-login {
+    background: #2a2a2a;      /* Dise;o sencillopara el mensaje */
+    border-radius: 12px;
+    padding: 20px;
+    color: #cfcfcf;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 209, 0, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
