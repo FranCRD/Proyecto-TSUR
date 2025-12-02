@@ -24,9 +24,12 @@ session_start();
         <?php else: ?>
             <!-- Usuario logueado -->
              <div class="user-menu">
-             <a href="#" class="user-icon">👤 <?php echo $_SESSION['nombre_usuario']; ?></a>
+             <a href="#" class="user-icon">
+            <img src="<?php echo htmlspecialchars($_SESSION['foto_perfil']); ?>" class="user-photo">
+            <span class="user-name"><?php echo $_SESSION['nombre_usuario']; ?></span>
+             </a>
         <div class="user-dropdown">
-            <a href="editar_perfil.php">Editar perfil</a>
+            <a href="editarPerfil.php">Editar perfil</a>
             <a href="logout.php">Cerrar sesión</a>
         </div>
     </div> 
@@ -93,6 +96,8 @@ session_start();
 </footer>
 </body>
 </html>
+
+
 
 
 
