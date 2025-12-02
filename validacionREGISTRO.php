@@ -35,11 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 
+    //Foto de perfil por defecto
+    $foto_por_defecto = 'fotos_perfil/default.png';
+
     // Insertar nuevo usuario con contraseña encriptada
-    $sql = "INSERT INTO usuarios (nombre_usuario, apellido_usuario, telefono_usuario, email_usuario, password) 
-            VALUES ('$nombre_usuario', '$apellido_usuario', '$telefono_usuario', '$email', '$password_hash')";
+    $sql = "INSERT INTO usuarios (nombre_usuario, apellido_usuario, telefono_usuario, email_usuario, password, foto_perfil) 
+            VALUES ('$nombre_usuario', '$apellido_usuario', '$telefono_usuario', '$email', '$password_hash', '$foto_por_defecto')";
     
     if ($conexion->query($sql)) {
+        
         // Registro exitoso, redirigir al login
         header("Location: login.php?registro=1");
         exit();
@@ -48,4 +52,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 }
+$conexion->close();
 ?>
