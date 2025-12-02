@@ -84,6 +84,17 @@ body {
   border-bottom: 2px solid #ffd000;
 }
 
+/* ====== FOOTER ====== */
+.footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-top: 3px solid #ffd000;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
 /* ====== SECCIÓN PRINCIPAL ====== */
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
@@ -195,8 +206,6 @@ body {
 }
 
 
-
-
 /* ====== EFECTO VISUAL SUPERIOR ====== */
 body::before {
   content: "";
@@ -280,9 +289,15 @@ body::before {
 }
 
 .user-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
-    font-weight: bold;
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #333;
 }
+
 
 .user-dropdown {
     display: none;
@@ -308,6 +323,27 @@ body::before {
 .user-dropdown a:hover {
     background: #f0f0f0;
 }
+
+/* === FORZAR tamaño fijo de la foto del usuario en el header === */
+.header .user-menu .user-photo {
+    width: 40px !important;
+    height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+}
+
+.user-icon img {
+    display: inline-block;
+}
+
+
 
 
 
