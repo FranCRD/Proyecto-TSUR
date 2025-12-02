@@ -1,0 +1,187 @@
+/* ============== RESET ============== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    padding: 30px;
+}
+
+/* ============== CONTENEDOR PRINCIPAL ============== */
+.editar-perfil {
+    max-width: 550px;
+    margin: auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.editar-perfil h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.edita-perfil-contenedor {
+    width: 100%;
+}
+
+/* ============== FOTO DE PERFIL ============== */
+#fotoPerfilPreview {
+    display: block;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px auto 15px;
+    border: 3px solid #ddd;
+}
+
+/* Botón quitar foto */
+#btnQuitarFoto {
+    display: block;
+    margin: 10px auto 20px;
+    padding: 8px 14px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#btnQuitarFoto:hover {
+    background: #e60000;
+}
+
+/* ============== CAMPOS DE FORMULARIO ============== */
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    font-weight: bold;
+    color: #444;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo input[type="tel"],
+.campo input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: 0.2s;
+    background: #fff;
+}
+
+.campo input:focus {
+    border-color: #6e00ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(110,0,255,.3);
+}
+
+/* ============== BOTONES ============== */
+.btn button {
+    width: 100%;
+    padding: 12px;
+    background: #6e00ff;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.btn button:hover {
+    background: #5800cc;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #6e00ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ============== MENSAJES DE ERROR ============== */
+.error {
+    background: #ffdddd;
+    border-left: 4px solid #ff4d4d;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 15px;
+    color: #900;
+    border-radius: 6px;
+}
+
+/* ============== MODAL RECORTE ============== */
+#modalCrop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    display: none;
+}
+
+#modalCrop h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+#modalCrop img {
+    width: 100%;
+    max-height: 300px;
+    display: block;
+    border-radius: 6px;
+}
+
+#cropBtn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: #6e00ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#cropBtn:hover {
+    background: #5800cc;
+}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 480px) {
+    .editar-perfil {
+        padding: 20px;
+    }
+
+    #modalCrop {
+        width: 90%;
+    }
+}
