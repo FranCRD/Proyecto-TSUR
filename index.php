@@ -41,6 +41,7 @@ session_start();
         <div class="hero-content">
             <h1>Construimos confianza, no solo proyectos</h1>
             <p>En TSUR ofrecemos asesoría técnica y consultoría en construcción, garantizando calidad, seguridad y eficiencia en cada obra.</p><br>
+             <button>Solicitar asesoría</button> <!-- agregar enlace para que funcione el boton -->
         </div>
     </main>
     <!-- ===== SECCIÓN COMENTARIOS EN EL INICIO ===== -->
@@ -95,6 +96,7 @@ session_start();
 </footer>
 </body>
 </html>
+
 
 
 
