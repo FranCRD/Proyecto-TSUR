@@ -1,37 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); /* Tipo de letra */
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ====== CONTENEDOR PRINCIPAL DE PROYECTOS ====== */
+.proyectos-seccion {
+  background: #3a3a3a; 
+  padding: clamp(2rem, 5vw, 4rem) 0rem;
+  margin: 2rem 0;
+  border-top: 10px solid #000;
+  border-bottom: 10px solid #000;
+}
+
+.proyectos-seccion h3 {
+  color: #fff; 
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* ====== CARRUSEL ====== */
+.tsur-carrusel {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* ====== VIEWPORT ====== */
+.tsur-viewport {
+  width: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding: 15px 0;
+  scroll-snap-type: x mandatory;
+}
+
+/* ====== LISTA ====== */
 .proyectos_img {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 0;
+  display: flex;
+  gap: 40px; 
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0;
+  transition: transform 1s ease;
 }
 
-.card {
-    width: 900px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
+/* ====== TARJETAS =======*/
+.proyecto_item {
+  flex: 0 0 calc((100% - 30px) / 2);
+  min-width: calc((100% - 30px) / 2);
+  max-width: calc((100% - 30px) / 2);
+
+  background: #2d2d2d; 
+  border-radius: 22px;
+  padding: 24px;
+
+  border: 4px solid #000;       
+  outline: 4px solid #ffd000;   
+
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.35);
+  transition: all 1s ease;
+  scroll-snap-align: start;
 }
 
-.card img {
-    width: 100%;      
-    border-radius: 10px;
+.proyecto_item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 26px rgba(0,0,0,0.4);
 }
 
-/* Estilos para los mensajes de éxito y error */
-.mensaje {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    display: none;
+/* ====== IMAGEN (doble borde) ====== */
+.proyecto_item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+
+  border: 4px solid #000;
+  outline: 4px solid #ffd000;
 }
 
-.mensaje.exito {
-    background-color: #d4f8d4;
-    color: #2e7d32;
+/* ====== TITULO ====== */
+.proyecto_item h4 {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  color: #fff; 
+  font-weight: 700;
 }
+
+/* ====== DESCRIPCIÓN ====== */
+.proyecto_item p {
+  font-size: 1rem;
+  color: #e8e8e8; 
+  margin-top: 10px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ====== BOTONES ====== */
+.tsur-btn {
+  background: #000;
+  color: #ffd000;
+  border: 3px solid #ffd000;
+  font-size: 24px;
+  padding: 12px 14px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.tsur-btn:hover {
+  background: #ffd000;
+  color: #000;
+  border-color: #000;
+  transform: scale(1.1);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  .proyecto_item {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+  .proyecto_item img { height: 300px; }
+}
+
+@media (max-width: 600px) {
+  .proyecto_item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .proyecto_item img { height: 220px; }
+}
+
 
 .mensaje.error {
     background-color: #ffd6d6;
