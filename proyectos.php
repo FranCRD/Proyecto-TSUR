@@ -96,8 +96,9 @@ session_start();
     <button type="button" onclick="deleteProyectos()">Eliminar</button>
 </form>
 
-<p id="mensajeDelete" style="font-weight:bold;"></p>
-<?php endif; ?>
+<?php if (!empty($error)): ?>
+        <p style="color:red; font-weight:bold;"><?php echo htmlspecialchars($error); ?></p>
+ <?php endif; ?>
 <br>
 <hr>
 
