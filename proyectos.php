@@ -100,9 +100,55 @@ session_start();
 <?php endif; ?>
 <br>
 <hr>
-<h3>Proyectos Destacados</h3>
-    <div> 
-        <ul class="proyectos_img" id="proyectos_img"></ul>
+
+     <!-- Lo nuevo agregado -->   
+<div class="proyectos-seccion">
+    
+        <h3>Proyectos Destacados</h3>
+        
+    <div class="tsur-carrusel">
+        <button class="tsur-btn prev" onclick="tsurPrev()">&#10094;</button>
+
+        <div class="tsur-viewport">
+            <ul class="proyectos_img" id="proyectos_img">
+                <?php if (!empty($projects)): ?>
+                    <?php foreach ($projects as $p): ?>
+                        <?php
+                            $img = $p['imagen'] ?? '';
+                            if ($img !== '' && !preg_match('/^(https?:)?\/\//i', $img) && strpos($img, '/') !== 0) {
+                                $img = 'uploads/' . $img;
+                            }
+                        ?>
+                        <li class="proyecto_item">
+                            <img src="<?php echo htmlspecialchars($img); ?>" alt="<?php echo htmlspecialchars($p['titulo']); ?>">
+                            <h4><?php echo htmlspecialchars($p['titulo']); ?></h4>
+                            <p><?php echo nl2br(htmlspecialchars($p['descripcion'])); ?></p>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="proyecto_item">No hay proyectos aún.</li>
+                <?php endif; ?>
+            </ul>
+        </div>
+
+        <button class="tsur-btn next" onclick="tsurNext()">&#10095;</button>
     </div>
+
+    <script>
+function tsurNext() {
+    const viewport = document.querySelector(".tsur-viewport");
+    viewport.scrollLeft += viewport.clientWidth;
+}
+
+function tsurPrev() {
+    const viewport = document.querySelector(".tsur-viewport");
+    viewport.scrollLeft -= viewport.clientWidth;
+}
+
+// Auto-movimiento
+setInterval(() => {
+    tsurNext();
+}, 7000);
+</script>
 </body>
 </html>
