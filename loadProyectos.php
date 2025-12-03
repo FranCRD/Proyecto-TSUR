@@ -1,4 +1,4 @@
-<?php
+        <?php
 include("conexion.php");
 
 $sql = "SELECT idproyectos, titulo_proyectos, proyectos, descripcion_proyectos 
@@ -9,8 +9,7 @@ $result = $conexion->query($sql);
 
 while ($row = $result->fetch_assoc()) {
     echo "
-        <li class='card'>
-            <h4>" .htmlspecialchars($row['idproyectos']) ." </h4>
+        <li class='proyecto_item''>
             <h3>" . htmlspecialchars($row['titulo_proyectos']) . "</h3>
             <img src='" . htmlspecialchars($row['proyectos']) . "'>
             <p>" . htmlspecialchars($row['descripcion_proyectos']) . "</p>
